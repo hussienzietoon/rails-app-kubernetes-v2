@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-auth
+  template:
+    metadata:
+      labels:
+        app: nginx-auth
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          volumeMounts:
+            - name: html
+              mountPath: /usr/share/nginx/html
+            - name: config
+              mountPath: /etc/nginx/conf.d
+            - name: auth
+              mountPath: /etc/nginx/
+          ports:
+            - containerPort: 80
+      volumes:
+        - name: html
+          persistentVolumeClaim:
+            claimName: image-pvc
+        - name: config
+          configMap:
+            name: nginx-config
+        - name: auth
+          secret:
+            secretName: basic-auth
