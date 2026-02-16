@@ -125,17 +125,6 @@ Used to ensure the frontend pod is running properly.
 
 ---
 
----
-
-## ✍️ Author
-
-- **Hussien Mohamed**
-- DevOps Intern @ eSpace
-- [DockerHub](https://hub.docker.com/u/hussienmohamed)
-- [LinkedIn](https://www.linkedin.com/in/hussien-mohamed-zietoon-9960ba317)
-
----
-
 ## 📌 Notes
 
 - `nginx.conf` is customized to serve SPA routing and act as a proxy.
